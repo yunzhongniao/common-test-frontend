@@ -1,22 +1,28 @@
 <template>
   <div class="app-container">
     <el-row>
-      <el-col :span="8" :offset="8">
+      <el-col :span="12" :offset="6">
         <el-form ref="form" :model="form" label-width="80px">
-          <el-form-item label="模板id">
-            <el-input v-model="form.id" />
-          </el-form-item>
           <el-form-item label="模板名称">
             <el-input v-model="form.name" />
           </el-form-item>
           <el-form-item label="关联变量">
             <el-button type="primary" @click="dialogFormVisible = true">添加变量</el-button>
-            <el-button type="primary" @click="dialogFormVisible2 = true">添加变量2</el-button>
+            <!-- ><el-button type="primary" @click="dialogFormVisible2 = true">添加变量2</el-button><!-->
             <el-button type="primary">删除变量</el-button>
-            <el-input v-model="form.name1">变量1</el-input>
-            <el-input v-model="form.name2">变量2</el-input>
-            <el-input v-model="form.name3">变量3</el-input>
-            <el-input v-model="form.name4">变量4</el-input>
+            <el-table
+              :data="tableData"
+              style="width: 100%"
+            >
+              <el-table-column
+                prop="paramId"
+                label="变量引用id"
+              />
+              <el-table-column
+                prop="paramName"
+                label="变量名称"
+              />
+            </el-table>
           </el-form-item>
           <el-form-item label="上传文件">
             <el-upload
@@ -103,7 +109,24 @@ export default {
         variety: '',
         contract: ''
       },
-      fileList: [{ name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }]
+      fileList: [
+        { name: 'food.jpeg',
+          url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+        }],
+      tableData: [
+        {
+          paramId: '{{match_count_contract.a.a20200101}}',
+          paramName: '成交量.大豆.合约'
+        },
+        {
+          paramId: '{{match_count_contract.a.a20200101}}',
+          paramName: '成交量.大豆.合约'
+        },
+        {
+          paramId: '{{match_count_contract.a.a20200101}}',
+          paramName: '成交量.大豆.合约'
+        }
+      ]
     }
   },
   methods: {

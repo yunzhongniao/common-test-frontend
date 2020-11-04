@@ -20,6 +20,46 @@
         </el-form>
       </el-col>
     </el-row>
+    <el-row>
+      <el-form :model="form" title="关联到合约的期货变量选择">
+        <el-form-item label="变量列表" :label-width="formLabelWidth">
+          <el-select v-model="form.param" placeholder="请选择">
+            <el-option label="match_count_contract" value="match_count_contract" />
+            <el-option label="order_count_contract" value="order_count_contract" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="选择品种" :label-width="formLabelWidth">
+          <el-select v-model="form.variety" placeholder="请选择品种">
+            <el-option label="a-大豆" value="a-大豆" />
+            <el-option label="i-铁矿石" value="i-铁矿石" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="选择合约" :label-width="formLabelWidth">
+          <el-select v-model="form.contract" placeholder="请选择合约">
+            <el-option label="a20200101" value="a20200101" />
+            <el-option label="a20200102" value="a20200102" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="变量引用" :label-width="formLabelWidth">
+          <el-input v-model="value1" />
+        </el-form-item>
+      </el-form>
+    </el-row>
+    <el-divider />
+    <el-row>
+      <el-form :model="form" title="不需要级联选择的变量">
+        <el-form-item label="变量列表" :label-width="formLabelWidth">
+          <el-select v-model="form.param2" placeholder="请选择">
+            <el-option label="match_count_contract" value="match_count_contract" />
+            <el-option label="order_count_contract" value="order_count_contract" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="变量引用" :label-width="formLabelWidth">
+          <el-input v-model="value2" />
+        </el-form-item>
+      </el-form>
+    </el-row>
+    <el-divider />
     <pre>
   ### 变量定义
 开发人员在开发阶段确定变量的所有信息。
@@ -80,6 +120,20 @@ mpp中生成并存储报表依赖的数据。
 export default {
   data() {
     return {
+      form: {
+        param: '',
+        variety: '',
+        contract: '',
+        param2: ''
+      }
+    }
+  },
+  computed: {
+    value1() {
+      return '{{' + this.form.param + '.' + this.form.variety + '.' + this.form.contract + '}}'
+    },
+    value2() {
+      return '{{' + this.form.param2 + '}}'
     }
   }
 }
