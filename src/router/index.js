@@ -96,6 +96,41 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/report',
+    component: Layout,
+    name: '报表',
+    meta: {
+      title: '报表',
+      icon: 'lock'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/report/index'),
+        name: 'Report',
+        meta: { title: '报表列表', icon: 'report', affix: true }
+      },
+      {
+        path: 'templateList',
+        component: () => import('@/views/report/templateList'),
+        name: '模板列表',
+        meta: { title: '模板列表', icon: 'report', affix: true }
+      },
+      {
+        path: 'templateCreate',
+        component: () => import('@/views/report/templateCreate'),
+        name: '创建模板',
+        meta: { title: '创建模板', icon: 'report', affix: true }
+      },
+      {
+        path: 'demo',
+        component: () => import('@/views/report/demo'),
+        name: '简要示例',
+        meta: { title: '简要示例', icon: 'guide', affix: true }
+      }
+    ]
+  },
+  {
     path: '/guide',
     component: Layout,
     redirect: '/guide/index',
