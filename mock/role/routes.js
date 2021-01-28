@@ -65,25 +65,25 @@ const constantRoutes = [
         path: 'index',
         component: 'views/report/index',
         name: 'Report',
-        meta: { title: '报表列表', icon: 'report', affix: true }
+        meta: { title: '报表列表', icon: 'report' }
       },
       {
         path: 'templateList',
         component: 'views/report/templateList',
         name: 'tempalte列表',
-        meta: { title: '模板列表', icon: 'report', affix: true }
+        meta: { title: '模板列表', icon: 'report' }
       },
       {
         path: 'templateCreate',
         component:  'views/report/templateCreate',
         name: '创建模板',
-        meta: { title: '创建模板', icon: 'report', affix: true }
+        meta: { title: '创建模板', icon: 'report' }
       },
       {
         path: 'demo',
         component: 'views/report/demo',
         name: '简要示例',
-        meta: { title: '简要示例', icon: 'lock', affix: true }
+        meta: { title: '简要示例', icon: 'lock' }
       }
     ]
   },

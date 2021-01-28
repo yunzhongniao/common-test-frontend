@@ -108,25 +108,54 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/report/index'),
         name: 'Report',
-        meta: { title: '报表列表', icon: 'report', affix: true }
+        meta: { title: '报表列表', icon: 'report' }
       },
       {
         path: 'templateList',
         component: () => import('@/views/report/templateList'),
         name: '模板列表',
-        meta: { title: '模板列表', icon: 'report', affix: true }
+        meta: { title: '模板列表', icon: 'report' }
       },
       {
         path: 'templateCreate',
         component: () => import('@/views/report/templateCreate'),
         name: '创建模板',
-        meta: { title: '创建模板', icon: 'report', affix: true }
+        meta: { title: '创建模板', icon: 'report' }
       },
       {
         path: 'demo',
         component: () => import('@/views/report/demo'),
         name: '简要示例',
-        meta: { title: '简要示例', icon: 'guide', affix: true }
+        meta: { title: '简要示例', icon: 'guide' }
+      }
+    ]
+  },
+  {
+    path: '/hongxiutianxiang',
+    component: Layout,
+    name: '红袖添香',
+    meta: {
+      title: '红袖添香',
+      icon: 'lock'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/hongxiutianxiang/index'),
+        name: 'hongxiutianxiang',
+        meta: { title: '红袖添香主页', icon: 'guide' }
+      },
+      {
+        path: 'templateList',
+        component: () => import('@/views/hongxiutianxiang/imageView'),
+        name: '图片视图',
+        meta: { title: '图片视图', icon: 'guide' }
+      },
+      {
+        path: 'templateCreate',
+        component: () => import('@/views/hongxiutianxiang/bookView'),
+        name: '书籍视图',
+        meta: { title: '书籍视图', icon: 'guide' }
       }
     ]
   },
