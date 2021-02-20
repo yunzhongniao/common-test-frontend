@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     initChart() {
-      this.myChart = echarts.init(document.getElementById(this.id))
+      this.myChart = echarts.init(document.getElementById(this.id), null, { renderer: 'canvas' })
 
       var option
 
@@ -63,7 +63,7 @@ export default {
       }
       var bigData = []
       for (let i = 0; i < 240; i++) {
-        for (let j = 0; j <= 200; j++) {
+        for (let j = 50; j <= 150; j++) {
           if (matchData[i][1] < j) {
             bigData.push([i, j, 1])
           } else if (matchData[i][1] >= j) {
@@ -73,6 +73,10 @@ export default {
       }
 
       option = {
+        grid: {
+          show: true,
+          backgroundColor: 'rgb(0, 0, 0)'
+        },
         visualMap: [
           {
             type: 'piecewise',
@@ -89,14 +93,14 @@ export default {
           type: 'category',
           data: xAxisData,
           splitArea: {
-            show: true
+            show: false
           }
         },
         yAxis: {
           type: 'category',
           data: yAxisData,
           splitArea: {
-            show: true
+            show: false
           }
         },
         dataZoom: [
