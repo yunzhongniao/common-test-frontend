@@ -59,18 +59,18 @@ export default {
       var sellData = []
       for (let i = 0; i < 240; i++) {
         xAxisData.push(i)
-        const p = this.getRndInteger(75, 125)
+        const p = this.getRndInteger(50, 75)
         matchData.push([i, p])
         buyData.push([i, p, this.getRndInteger(1, 20)])
         sellData.push([i, p - 5, this.getRndInteger(1, 20)])
       }
       var yAxisData = []
-      for (let j = 100; j <= 300; j++) {
+      for (let j = 100; j <= 200; j++) {
         yAxisData.push([j])
       }
       var bigData = []
       for (let i = 0; i < 240; i++) {
-        for (let j = 50; j <= 150; j++) {
+        for (let j = 45; j <= 80; j++) {
           if (matchData[i][1] < j) {
             bigData.push([i, j, 1])
           } else if (matchData[i][1] >= j) {
@@ -83,20 +83,6 @@ export default {
         grid: {
           show: true,
           backgroundColor: 'rgb(0, 0, 0)'
-        },
-        dataset: [
-          {
-            source: buyData
-          },
-          {
-            source: sellData
-          },
-          {
-            source: matchData
-          }
-        ],
-        legend: {
-          data: ['买气泡', '卖气泡', '成交数据']
         },
         visualMap: [
           {
@@ -130,27 +116,7 @@ export default {
             show: true,
             xAxisIndex: [0],
             start: 1,
-            end: 100
-          },
-          {
-            type: 'slider',
-            show: true,
-            yAxisIndex: [0],
-            left: '93%',
-            start: 1,
-            end: 100
-          },
-          {
-            type: 'inside',
-            xAxisIndex: [0],
-            start: 1,
-            end: 100
-          },
-          {
-            type: 'inside',
-            yAxisIndex: [0],
-            start: 1,
-            end: 100
+            end: 20
           }
         ],
         series: [
@@ -165,23 +131,17 @@ export default {
           },
           {
             id: 1,
-            name: '买气泡',
             symbolSize: function(data) {
               return data[2]
             },
+            data: buyData,
             type: 'scatter',
             itemStyle: {
               color: 'yellow'
-            },
-            encode: {
-              x: 0,
-              y: 1
-            },
-            datasetIndex: 0
+            }
           },
           {
             id: 2,
-            name: '卖气泡',
             symbolSize: function(data) {
               return data[2]
             },
@@ -189,19 +149,13 @@ export default {
             type: 'scatter',
             itemStyle: {
               color: 'blue'
-            },
-            datasetIndex: 1
+            }
           },
           {
             id: 3,
-            name: '成交数据',
+            data: matchData,
             type: 'line',
-            smooth: true,
-            encode: {
-              x: 'x',
-              y: 'y'
-            },
-            datasetIndex: 2
+            smooth: true
           }]
       }
 

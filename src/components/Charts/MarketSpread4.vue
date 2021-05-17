@@ -84,20 +84,6 @@ export default {
           show: true,
           backgroundColor: 'rgb(0, 0, 0)'
         },
-        dataset: [
-          {
-            source: buyData
-          },
-          {
-            source: sellData
-          },
-          {
-            source: matchData
-          }
-        ],
-        legend: {
-          data: ['买气泡', '卖气泡', '成交数据']
-        },
         visualMap: [
           {
             type: 'piecewise',
@@ -165,23 +151,17 @@ export default {
           },
           {
             id: 1,
-            name: '买气泡',
             symbolSize: function(data) {
               return data[2]
             },
+            data: buyData,
             type: 'scatter',
             itemStyle: {
               color: 'yellow'
-            },
-            encode: {
-              x: 0,
-              y: 1
-            },
-            datasetIndex: 0
+            }
           },
           {
             id: 2,
-            name: '卖气泡',
             symbolSize: function(data) {
               return data[2]
             },
@@ -189,19 +169,13 @@ export default {
             type: 'scatter',
             itemStyle: {
               color: 'blue'
-            },
-            datasetIndex: 1
+            }
           },
           {
             id: 3,
-            name: '成交数据',
+            data: matchData,
             type: 'line',
-            smooth: true,
-            encode: {
-              x: 'x',
-              y: 'y'
-            },
-            datasetIndex: 2
+            smooth: true
           }]
       }
 
