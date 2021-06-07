@@ -23,6 +23,12 @@ const computeCenterRouter = {
       component: () => import('@/views/computeCenter/computeCenter-table'),
       name: 'computeCenterTable',
       meta: { title: 'Task属性' }
+    },
+    {
+      path: 'compute-user-resource',
+      component: () => import('@/views/computeCenter/computeUserResource'),
+      name: 'ComputeUserResource',
+      meta: { title: '用户计算资源' }
     }
   ]
 }
