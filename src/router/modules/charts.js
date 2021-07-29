@@ -35,6 +35,12 @@ const chartsRouter = {
       component: () => import('@/views/charts/MarketSpread'),
       name: 'market spread',
       meta: { title: 'market spread', noCache: true }
+    },
+    {
+      path: 'market-spread-show',
+      component: () => import('@/views/charts/MarketSpreadShow'),
+      name: 'market spread*',
+      meta: { title: 'market spread*', noCache: true }
     }
   ]
 }
